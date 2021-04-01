@@ -4,7 +4,7 @@ import shutil
 import subprocess
 import sys
 
-from constants import EXPORT_PATH, EXTENSIONS, FOLDER_NAMES, GODOT, PROJECT_NAME, RELEASES_FOLDER, TYPE
+from constants import ARGUMENT_PARSER_CREATOR, EXPORT_PATH, EXTENSIONS, FOLDER_NAMES, GODOT, PROJECT_NAME, RELEASES_FOLDER, TYPE
 from release_type import ReleaseLevel, ReleaseType
 from version_info import VersionInfo, get_version, set_version
 
@@ -45,21 +45,7 @@ def make_release(platform: str, version: VersionInfo):
 def main():
     version = get_version()
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--clean-up-releases', '-cl', action='store_true', default=False)
-    parser.add_argument('--current', '-c', action="store_true", default=False)
-    parser.add_argument('--platform', '-p', action="store")
-
-    release_level_group = parser.add_mutually_exclusive_group()
-    release_level_group.add_argument('--alpha', '-a', action="store_const", const=ReleaseLevel.alpha, default=ReleaseLevel.public, dest="release_level")
-    release_level_group.add_argument('--beta', '-b', action="store_const", const=ReleaseLevel.beta, default=ReleaseLevel.public, dest="release_level")
-    release_level_group.add_argument('--release-candidate', '-rc', action="store_const", const=ReleaseLevel.release_candidate, default=ReleaseLevel.public, dest="release_level")
-
-    release_type_group = parser.add_mutually_exclusive_group()
-    release_type_group.add_argument('--major', '-ma', action="store_const", const=ReleaseType.major, dest="release_type")
-    release_type_group.add_argument('--minor', '-mi', action="store_const", const=ReleaseType.minor, dest="release_type")
-    release_type_group.add_argument('--bugfix', '-bu', action="store_const", const=ReleaseType.bugfix, dest="release_type")
-    release_type_group.add_argument('--hotfix', '-ho', action="store_const", const=ReleaseType.hotfix, dest="release_type")
+    parser = ARGUMENT_PARSER_CREATOR()
 
     args = parser.parse_args(sys.argv[1:])
 
@@ -67,6 +53,7 @@ def main():
         version.increment(args.release_level, args.release_type)
         set_version(version)
     make_release(args.platform, version)
+    print("\a")
 
 
 if __name__ == '__main__':  # To test.

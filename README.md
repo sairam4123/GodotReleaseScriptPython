@@ -29,7 +29,7 @@ A release script made by me to export Godot projects with ease
 - Then, type `yes`. It should initialize like this. ![img](https://i.imgur.com/sqynZRu.png)
 - Now, close the window and reopen it again.
 - Do same as second step, and on the third question type `no`.
-- Then on the last question, select yes. Now it will generate you a build, this is your first build. It should take a while and generate all the builds and create all file paths. Here's a video showing how it works. ![video](https://streamable.com/mtfdwn)
+- Then on the last question, select yes. Now it will generate you a build, this is your first build. It should take a while and generate all the builds and create all file paths. Here's a video showing how it works. ![video](https://gfycat.com/AstonishingWateryAnura)
 - The build files will be located in this path, `root/releases/{project_name}/Public/v0.1.0/`. There will be three builds, Windows, Mac and Linux. (Mac build doesn't work well, improving it.)
 
 # What's the use of other two questions?

@@ -1,3 +1,4 @@
+import argparse
 from configparser import ConfigParser, ParsingError
 from pathlib import Path
 
@@ -77,3 +78,22 @@ ARGUMENTS_DICT = {
     ReleaseLevel.release_candidate: "-rc",
     ReleaseLevel.public: "",
 }
+
+
+def ARGUMENT_PARSER_CREATOR():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--clean-up-releases', '-clr', action='store_true', default=False)
+    parser.add_argument('--current', '-c', action="store_true", default=False)
+
+    release_level_group = parser.add_mutually_exclusive_group()
+    release_level_group.add_argument('--alpha', '-a', action="store_const", const=ReleaseLevel.alpha, default=ReleaseLevel.public, dest="release_level")
+    release_level_group.add_argument('--beta', '-b', action="store_const", const=ReleaseLevel.beta, default=ReleaseLevel.public, dest="release_level")
+    release_level_group.add_argument('--release-candidate', '-rc', action="store_const", const=ReleaseLevel.release_candidate, default=ReleaseLevel.public, dest="release_level")
+
+    release_type_group = parser.add_mutually_exclusive_group()
+    release_type_group.add_argument('--major', '-ma', action="store_const", const=ReleaseType.major, dest="release_type")
+    release_type_group.add_argument('--minor', '-mi', action="store_const", const=ReleaseType.minor, dest="release_type")
+    release_type_group.add_argument('--bugfix', '-bu', action="store_const", const=ReleaseType.bugfix, dest="release_type")
+    release_type_group.add_argument('--hotfix', '-ho', action="store_const", const=ReleaseType.hotfix, dest="release_type")
+
+    return parser
