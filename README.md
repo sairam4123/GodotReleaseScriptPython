@@ -1,6 +1,5 @@
 # GodotReleaseScriptPython
-
-A release script to export Godot Games with ease.
+A release script made by me to export Godot projects with ease
 
 # FAQ
 
@@ -30,7 +29,7 @@ A release script to export Godot Games with ease.
 - Then, type `yes`. It should initialize like this. ![img](https://i.imgur.com/sqynZRu.png)
 - Now, close the window and reopen it again.
 - Do same as second step, and on the third question type `no`.
-- Then on the last question, select yes. Now it will generate you a build, this is your first build. It should take a while and generate all the builds and create all file paths.
+- Then on the last question, select yes. Now it will generate you a build, this is your first build. It should take a while and generate all the builds and create all file paths. Here's a video showing how it works. ![video](https://streamable.com/mtfdwn)
 - The build files will be located in this path, `root/releases/{project_name}/Public/v0.1.0/`. There will be three builds, Windows, Mac and Linux. (Mac build doesn't work well, improving it.)
 
 # What's the use of other two questions?
@@ -39,9 +38,9 @@ A release script to export Godot Games with ease.
 - The first question reads like this, `What type of release do you want to make?`. This means that which number do you want to increase, like do you want to release a major version, ect.
 - The second question reads like this, `Which release level do you want your release be set?`. This means that which release level such as Alpha, beta, RC, public ect, be set to your release. The level of release changes the folder which the game builds, like when you set to Alpha,
 it exports your game to `root/releases/{project_name}/Alpha/{version}`. Same for others. Beta => Beta, RC => Release Candidate and Public => Public.
-- It also manages your serial number, the serial number starts from 0. And uses this regex, `(\d)\.(\d)\.?(\d)?\.?(\d)?\.?([a-z]{1,2})?(\d{1,3})?` You can take a look into this, https://regex101.com/r/8Dcvts/1.
+- It also manages your serial number, the serial number starts from 0 and uses this regex, `(\d)\.(\d)\.?(\d)?\.?(\d)?\.?([a-z]{1,2})?(\d{1,3})?` You can take a look into this, https://regex101.com/r/8Dcvts/1.
 - Examples: 
-   1. v0.1.0 (Intial release)
+   1. v0.1.0 (Initial release)
    2. v0.2.0 (Minor release)
    3. v0.2.1 (Bugfix release)
    4. v0.3.0a0 (Alpha release)
