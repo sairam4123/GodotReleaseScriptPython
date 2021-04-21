@@ -1,11 +1,9 @@
-import argparse
 import os
 import shutil
 import subprocess
 import sys
 
 from constants import ARGUMENT_PARSER_CREATOR, EXPORT_PATH, EXTENSIONS, FOLDER_NAMES, GODOT, PROJECT_NAME, RELEASES_FOLDER, TYPE
-from release_type import ReleaseLevel, ReleaseType
 from version_info import VersionInfo, get_version, set_version
 
 

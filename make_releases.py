@@ -22,7 +22,6 @@ def make_releases(platforms, release_type: ReleaseType, release_level: ReleaseLe
 
 
 def main(parse_args: str):
-    import argparse
     import shlex
 
     parser = ARGUMENT_PARSER_CREATOR()

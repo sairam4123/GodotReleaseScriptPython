@@ -17,9 +17,9 @@ class VersionInfo:
             release_type: ReleaseType = None,
             short_version: bool = False,
     ):
-        self.major = int(major)
-        self.minor = int(minor)
-        self.bugfix = int(bugfix)
+        self.major = 0 if major is None else int(major)
+        self.minor = 0 if minor is None else int(minor)
+        self.bugfix = 0 if bugfix is None else int(bugfix)
         self.hotfix = 0 if hotfix is None else int(hotfix)
         self.short_version = short_version
         self.release_type = release_type
