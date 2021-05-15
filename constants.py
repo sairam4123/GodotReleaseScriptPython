@@ -39,7 +39,8 @@ GODOT = 'godot'
 EXTENSIONS = {
     'Windows Desktop': '.exe',
     'Mac OSX': '.zip',
-    'Linux/X11': '.x86_64'
+    'Linux/X11': '.x86_64',
+    'HTML5': '.html'
 }
 TYPE = {
     ReleaseLevel.alpha: "_A",

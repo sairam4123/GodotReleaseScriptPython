@@ -31,7 +31,7 @@ def main(parse_args: str):
     if args.clean_up_releases:
         clean_releases()
     else:
-        platforms = ['Windows Desktop', 'Mac OSX', 'Linux/X11']
+        platforms = ['Windows Desktop', 'Mac OSX', 'Linux/X11', 'HTML5']
         make_releases(platforms, args.release_type, args.release_level, args.current)
         print("\a")
 
