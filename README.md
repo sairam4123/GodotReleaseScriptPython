@@ -6,10 +6,10 @@ A release script made by me to export Godot projects with ease
 ## 1. What does it do?:
 - A: Manages versioning and releasing the game.
 
-## What doesn't it do?
+## 2. What doesn't it do?
 - A: Creates Godot Projects and configures exports.
 
-## Are there any prerequisites?
+## 3. Are there any prerequisites?
 - A: Yes, there are some prerequisites to use this.  
     1. Godot project.  
         - Without Godot project in the root folder, this tool won't work.
@@ -22,7 +22,7 @@ A release script made by me to export Godot projects with ease
     4. 7zip and Godot in Path. (For Windows only) (I don't know about Linux and Mac. I'll let you know soon.)
         - Keep the 7zip and Godot in Path. (Make sure that 7zip and Godot executable is installed and set in Path.)
 
-## How should I use this? 
+## 4. How should I use this? 
 - First, run the make_release.bat.
 ![img](https://i.imgur.com/deIEZ1K.png) You will get something like this.  
 - Then, press c and enter twice. It should look like this. ![img](https://i.imgur.com/VHOzHdF.png)
@@ -54,5 +54,6 @@ it exports your game to `root/releases/{project_name}/Alpha/{version}`. Same for
    10. v0.3.1 (Patch or bugfix)
    11. v0.3.1.1 (Hotfix)
    12. v1.0.0 (Major release)  
+
 #### Hope my tool would be helpful for you.
 You can always contact me on Discord (Sairam#1724) or Guilded (Sairam)
