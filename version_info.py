@@ -91,7 +91,6 @@ class VersionInfo:
         self.release_level = release_level
 
     def convert_to_godot_format(self):
-        print(str(self))
         return repr(str(self).lstrip("v")).replace("'", '"')
 
     @classmethod
@@ -106,6 +105,12 @@ class VersionInfo:
             return cls(*match.groups())
         else:
             return cls.start_version()
+
+    @classmethod
+    def check_version(cls, version: str):
+        pattern: re.Pattern = re.compile(r"(\d)\.(\d)\.?(\d)?\.?(\d)?\.?([a-z]{1,2})?(\d{1,3})?")
+        match: re.Match = pattern.match(version.replace('"', ''))
+        return bool(match)
 
 
 def set_version(new_version: VersionInfo) -> None:
@@ -123,18 +128,30 @@ def set_version(new_version: VersionInfo) -> None:
         config.write(config_file)
         config_file.close()
 
+        with open(list(PROJECT_FOLDER.glob("version.txt"))[0], 'w') as version_file:
+            version_file.write(str(new_version))
+
 
 def get_version() -> VersionInfo:
-    config = ConfigParser()
-    with open(list(PROJECT_FOLDER.glob("export_presets.cfg"))[0], 'r') as exports_config:
-        config.read_file(exports_config)
+    try:
+        version_file = open(list(PROJECT_FOLDER.glob("version.txt"))[0], 'r')
+    except IndexError:
+        version_file = open(PROJECT_FOLDER/"version.txt", "w+")
+    else:
+        if not VersionInfo.check_version(version_file.read()):
+            print("Falling back to export presets")
+            config = ConfigParser()
+            with open(list(PROJECT_FOLDER.glob("export_presets.cfg"))[0], 'r') as exports_config:
+                config.read_file(exports_config)
 
-        version: VersionInfo = VersionInfo.start_version()
-        for section_name, section in config.items():
-            for key, value in section.items():
-                if key.endswith('version'):
-                    version = VersionInfo.load_version(value)
-        return version
+                version: VersionInfo = VersionInfo.start_version()
+                for section_name, section in config.items():
+                    for key, value in section.items():
+                        if key.endswith('version'):
+                            version = VersionInfo.load_version(value)
+                return version
+        else:
+            return VersionInfo.load_version(version_file.read())
 
 
 if __name__ == '__main__':  # Test Script
