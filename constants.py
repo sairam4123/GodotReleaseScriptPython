@@ -32,6 +32,7 @@ RELEASES_FOLDER = Path.cwd() / 'releases' if 'releases' not in str(Path.cwd()) e
 PROJECT_FOLDER = RELEASES_FOLDER.parent
 
 PROJECT_NAME = get_project_name()
+PROJECT_NAME_REPLACED_WITH_HYPENS = PROJECT_NAME.replace(' ', '-')
 EXPORT_PATH = RELEASES_FOLDER / PROJECT_NAME
 
 GODOT = 'godot'

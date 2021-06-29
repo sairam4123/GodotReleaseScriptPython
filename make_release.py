@@ -3,7 +3,7 @@ import shutil
 import subprocess
 import sys
 
-from constants import ARGUMENT_PARSER_CREATOR, EXPORT_PATH, EXTENSIONS, FOLDER_NAMES, GODOT, PROJECT_NAME, RELEASES_FOLDER, TYPE
+from constants import ARGUMENT_PARSER_CREATOR, EXPORT_PATH, EXTENSIONS, FOLDER_NAMES, GODOT, PROJECT_NAME_REPLACED_WITH_HYPENS, RELEASES_FOLDER, TYPE
 from version_info import VersionInfo, get_version, set_version
 
 
@@ -19,7 +19,7 @@ def make_release(platform: str, version: VersionInfo):
     path = (RELEASES_FOLDER / platform_replaced)
     path.mkdir(parents=True, exist_ok=True)
 
-    file_base_name = f"{PROJECT_NAME}-{platform_replaced}-{version}{TYPE[version.release_level]}"
+    file_base_name = f"{PROJECT_NAME_REPLACED_WITH_HYPENS}-{platform_replaced}-{version}{TYPE[version.release_level]}"
 
     export_file_name = f'{file_base_name}{EXTENSIONS[platform]}'
     zip_file_name_7z = f'{file_base_name}.7z'
